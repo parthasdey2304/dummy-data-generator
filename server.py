@@ -44,7 +44,7 @@ def generate_data():
         response = send_file(file_path, as_attachment=True)
 
         # Delete file from system
-        # os.remove(file_path)
+        os.remove(file_path)
 
         return response
 
