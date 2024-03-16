@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
     <title>Dummy Data Generator</title>
     <style>
         ::-webkit-scrollbar {
@@ -21,10 +22,10 @@
         </div>
 
         <div class="pt-10 md:px-4">
-            <form action="" id="form" class="flex-col space-y-5">
-                <input type="number" placeholder="Enter the number or rows : " class="w-full border-2 border-black px-4 py-4 rounded-full font-semibold mb-10" id="rows">
+            <form action="/generate-data" method="post" id="form" class="flex-col space-y-5">
+                <input type="number" placeholder="Enter the number or rows : " class="w-full border-2 border-black px-4 py-4 rounded-full font-semibold mb-10" id="rows" name="rows">
 
-                <div class="w-full h-[500px] flex-col space-y-5 overflow-y-scroll">
+                <div id="column_list_input" class="w-full h-[300px] md:h-[420px] flex-col space-y-5 overflow-y-scroll">
                     <div class="flex space-x-5">
                         <input type="text" placeholder="Column 1 name" class="w-1/2 border-2 border-black px-4 py-4 rounded-full font-semibold" id="columns_1">
                         
@@ -35,11 +36,44 @@
                             <option class="font-semibold" value="text">AI text</option>
                             <option class="font-semibold" value="full_names">Full Names</option>
                         </select>
-                    </div>                   
-                  
+                    </div>                  
                 </div>
+
+                <div class="w-full h-16 flex justify-center items-center">
+                    <div id="add_columns" class="w-full flex space-x-3 justify-center items-center bg-blue-600 text-white py-4 rounded-xl text-xl font-semibold"><p>Add Column</p><i class="ri-add-circle-fill font-extralight"></i></div>
+                </div>
+
+                <div class="w-full h-16 flex justify-center items-center">
+                    <button id="generate_data" class="w-full flex space-x-3 justify-center items-center bg-green-600 text-white py-4 rounded-xl text-xl font-semibold"><p>Generate Data</p><i class="ri-download-line"></i></button>
+                </div>
+
             </form>
         </div>
     </div>
+
+    <script>
+        let counter = 2;
+        const add_columns = document.querySelector("#add_columns");
+        add_columns.addEventListener('click', () => {
+            const column_list_input = document.querySelector("#column_list_input");
+            let st = column_list_input.innerHTML;
+            st += `
+                <div class="flex space-x-5">
+                    <input type="text" placeholder="Column ${counter} name" class="w-1/2 border-2 border-black px-4 py-4 rounded-full font-semibold" id="columns_${counter}">
+                    
+                    <select name="" id="column_${counter}_data_type" class="w-1/2 border-2 border-black px-4 py-4 rounded-full font-semibold">
+                        <option class="font-semibold" value="none">Select Data Type</option>
+                        <option class="font-semibold" value="int">Random Integers</option>
+                        <option class="font-semibold" value="decimal">Random Decimal</option>
+                        <option class="font-semibold" value="text">AI text</option>
+                        <option class="font-semibold" value="full_names">Full Names</option>
+                    </select>
+                </div> 
+            `;
+            counter++;
+            column_list_input.innerHTML = st;
+        });
+    </script>
+    
 </body>
 </html>
