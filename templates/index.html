@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Dummy Data Generator</title>
+    <style>
+        ::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-black w-full h-screen mx-auto px-4 flex justify-center items-center">
+    <div id="container" class="w-full md:w-[500px] h-[800px] bg-white rounded-3xl md:rounded-tr-3xl md:rounded-bl-3xl flex-col px-4 py-10 overflow-y-hidden">
+        <div class="flex justify-center items-center py-6">
+            <h1 class="text-3xl font-semibold font-['Poppins'] text-center">Dummy Data Generator</h1>
+        </div>
+
+        <div class="pt-10 md:px-4">
+            <form action="" id="form" class="flex-col space-y-5">
+                <input type="number" placeholder="Enter the number or rows : " class="w-full border-2 border-black px-4 py-4 rounded-full font-semibold mb-10" id="rows">
+
+                <div class="w-full h-[500px] flex-col space-y-5 overflow-y-scroll">
+                    <div class="flex space-x-5">
+                        <input type="text" placeholder="Column 1 name" class="w-1/2 border-2 border-black px-4 py-4 rounded-full font-semibold" id="columns_1">
+                        
+                        <select name="" id="column_1_data_type" class="w-1/2 border-2 border-black px-4 py-4 rounded-full font-semibold">
+                            <option class="font-semibold" value="none">Select Data Type</option>
+                            <option class="font-semibold" value="int">Random Integers</option>
+                            <option class="font-semibold" value="decimal">Random Decimal</option>
+                            <option class="font-semibold" value="text">AI text</option>
+                            <option class="font-semibold" value="full_names">Full Names</option>
+                        </select>
+                    </div>                   
+                  
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
